@@ -228,28 +228,50 @@ Brand visibility across ChatGPT, Gemini, Perplexity, Copilot, Grok. Generative E
 | Day | Mission | Arsenal |
 |-----|---------|---------|
 | **1** | **Establish Your Brand** — Build digital HQ, lock in brand identity, claim territory on Google | Website Studio, Brand Vault, GBP, Local SEO |
-| **2** | **Content & SEO Domination** — Flood the SERPs with authority content, own every keyword | Content Genius, OTTO SEO, Site Explorer |
+| **2** | **Content & SEO Domination** — Flood the SERPs with authority content, own every keyword | Content Genius, OTTO SEO, Site Explorer, GSC, Site Auditor |
 | **3** | **Authority & Link Building** — Press releases, cloud stacks, digital PR, guest posts, citations | Press Release, Cloud Stack, Digital PR, LinkLab, Citations |
-| **4** | **Paid & Social Amplification** — Google Ads campaigns, PPC keyword clusters, GBP social posts | PPC/Google Ads, GBP Posts |
+| **4** | **Paid & Social Amplification** — Agentic PPC campaigns, AI landing pages, GBP post amplification | PPC/Google Ads, Website Studio (clone_ppc), GBP Posts |
 | **5** | **AI Visibility & Scale** — Monitor brand across AI search engines, track GEO rankings | LLM Visibility, Site Explorer, Local SEO Heatmaps |
 
-## 15 Ready-to-Run Playbooks
+## 28 Ready-to-Run Playbooks
 
-1. Review & Complete Brand Vault (5 min)
-2. Build Topical Map Content Strategy (15 min)
-3. Increase Organic Traffic with Quality Content (20 min)
-4. AI-Optimized Industry Leader Listicle Builder (15 min)
-5. AI-Optimized Head-to-Head Content (15 min)
-6. AI Optimized About Us Page Creator (10 min)
-7. AI-Optimized Industry Leader Content Creation (15 min)
-8. Automated GBP Review Response & Amplification Engine (15 min)
-9. Gain Media Coverage and Brand Mentions (10 min)
-10. Deploy Single Cloud Stack Authority Order (10 min)
-11. Deploy Link Labs Guest Post Campaign (15 min)
-12. Create Local Directory Citations (5 min)
-13. Strengthen On-Page SEO for Priority Pages (15 min)
-14. Publisher Prospecting Outreach Playbook (15 min)
-15. Business Prospecting Outreach Playbook (15 min)
+**Day 1 — Establish Your Brand**
+1. Launch Your AI-Generated Website (15 min)
+2. Build Your Brand Vault — Digital Identity Foundation (10 min)
+3. Connect and Optimize Your Google Business Profile (10 min)
+4. Set Up Local SEO Heatmap Tracking (10 min)
+
+**Day 2 — Content & SEO Domination**
+5. Review & Complete Brand Vault (5 min)
+6. Build Topical Map Content Strategy (15 min)
+7. Increase Organic Traffic with Quality Content (20 min)
+8. Connect GSC and Analyze Search Performance (10 min)
+9. Site Explorer: Map Organic Landscape and Competitors (15 min)
+10. Run a Full Site Audit (15 min)
+11. AI-Optimized Industry Leader Listicle Builder (15 min)
+12. AI-Optimized Head-to-Head Content (15 min)
+13. AI Optimized About Us Page Creator (10 min)
+14. AI-Optimized Industry Leader Content Creation (15 min)
+15. Automated GBP Review Response & Amplification Engine (15 min)
+
+**Day 3 — Authority & Link Building**
+16. Gain Media Coverage and Brand Mentions (10 min)
+17. Deploy Single Cloud Stack Authority Order (10 min)
+18. Deploy Link Labs Guest Post Campaign (15 min)
+19. Create Local Directory Citations (5 min)
+20. Strengthen On-Page SEO for Priority Pages (15 min)
+21. Publisher Prospecting Outreach Playbook (15 min)
+22. Business Prospecting Outreach Playbook (15 min)
+
+**Day 4 — Paid & Social Amplification**
+23. Launch an Agentic PPC Campaign (20 min)
+24. Build PPC Landing Pages for Each Ad Campaign (15 min)
+25. GBP Post Campaign for Paid Traffic Amplification (10 min)
+
+**Day 5 — AI Visibility & Scale**
+26. Track Your Brand Across AI Search Engines (10 min)
+27. Analyze Competitive AI Search Share of Voice (15 min)
+28. Full 5-Day Results Review and Scale Plan (15 min)
 
 ## PPC Campaign Build — Quick Reference
 
