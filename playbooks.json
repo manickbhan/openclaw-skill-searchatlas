@@ -1,0 +1,304 @@
+{
+  "metadata": {
+    "event": "AI Search & Agentic Marketing Summit \u2014 February 2026",
+    "description": "Playbook definitions for the weekly summit challenge. Each playbook contains the instruction text to be loaded into Atlas Brain, the agent namespace it runs under, and the MCP tools it calls.",
+    "total_playbooks": 15,
+    "notes": "Fifteen playbooks covering Days 2 and 3 of the AI Search Summit weekly challenge. Each playbook contains step-by-step MCP tool call instructions."
+  },
+  "pre_work": {
+    "description": "Required setup before running any challenge playbooks",
+    "checklist": [
+      {
+        "step": "Create a SearchAtlas account or start a trial",
+        "url": "https://dashboard.searchatlas.com/register"
+      },
+      {
+        "step": "Create a project in Atlas Brain",
+        "url": "https://dashboard.searchatlas.com/home"
+      },
+      {
+        "step": "Install OTTO SEO on your website",
+        "url": "https://dashboard.searchatlas.com/seo-automation-v3/create-project"
+      },
+      {
+        "step": "Add integrations (GSC, GA4, GBP, Google Ads, Social Media)",
+        "url": "https://dashboard.searchatlas.com/settings?active_section=integration"
+      },
+      {
+        "step": "Create and fill your Brand Vault",
+        "url": "https://dashboard.searchatlas.com/brand-vault"
+      },
+      {
+        "step": "Connect an email address to Digital PR tools",
+        "url": "https://dashboard.searchatlas.com/outreach/campaigns"
+      },
+      {
+        "step": "Connect social media accounts to Social sharing tools",
+        "url": "https://dashboard.searchatlas.com/social-media-scheduler/all-projects"
+      },
+      {
+        "step": "Add images to your Media Library",
+        "url": null
+      },
+      {
+        "step": "Connect GBP to GBP Galactic",
+        "url": "https://dashboard.searchatlas.com/gbp-galactic/gbp-projects"
+      }
+    ]
+  },
+  "playbooks": [
+    {
+      "name": "Review & Complete Brand Vault",
+      "day": 2,
+      "action_number": 1,
+      "time_estimate": "5 min",
+      "description": "Reviews the current Brand Vault for completeness and ensures all fields are populated for optimal content tool outputs.",
+      "agent_namespaces": [
+        "orchestrator"
+      ],
+      "instruction": "Review the current brand vault for the user's active project.\n\nStep 1 \u2014 Retrieve the Brand Vault\nUse list_brand_vaults to find the user's Brand Vault. Then use retrieve_brand_vault_details to get the full configuration, get_brand_vault_business_info to check company info, and get_knowledge_graph to review authorship and social profiles.\n\nStep 2 \u2014 Audit Completeness\nCheck that all of the following fields are populated:\n- Company name and description\n- Website URL\n- Phone number and address\n- Logo and photos\n- Author name\n- Social media profile URLs\n- GBP URL (if this is a local business)\n- Voice profile selection\n- Top pages identified\n\nUse get_brand_vault_overview to check the overall knowledge base status (words, pages, images, videos).\n\nStep 3 \u2014 Report Findings\nPresent a clear summary of what is filled in vs what is missing. For each missing field, explain why it matters for content quality.\n\nStep 4 \u2014 Fix Missing Fields\nIf the user provides missing information, use update_brand_vault_business_info for contact/address data, update_knowledge_graph for authorship and social profiles, and update_brand_vault for general settings. Use upload_image if logo or photos need to be added.\n\nAlways ask the user before making changes.",
+      "expected_benefits": [
+        "Ensures Brand Vault is fully populated for maximum content quality",
+        "Identifies missing data fields that impact content generation",
+        "Improves outputs across all content tools that pull from Brand Vault"
+      ],
+      "url": "https://dashboard.searchatlas.com/brand-vault",
+      "sample_prompt": "Review the current brand vault for my project. Let me know if anything is missing or if there's any additional information I can add to get better outputs out of the content tools"
+    },
+    {
+      "name": "Build Topical Map Content Strategy",
+      "day": 2,
+      "action_number": 2,
+      "time_estimate": "15 min",
+      "description": "Creates a topical authority map for a target keyword to generate a structured content cluster strategy.",
+      "agent_namespaces": [
+        "content_genius"
+      ],
+      "instruction": "Create a topical authority map for the user's website.\n\nStep 1 \u2014 Identify the Target Keyword\nAsk the user for a single high-intent keyword that represents their core service or product. This should be a competitive head term they want to build authority around.\n\nStep 2 \u2014 Generate the Topical Map\nUse create_topical_map with the user's keyword. Target the home page as the pillar page. Generate 100 topic clusters that map the full topical space around the keyword.\n\nStep 3 \u2014 Review the Map\nOnce generated, use search_topical_maps to retrieve the completed map. Present the topic clusters organized by:\n- Pillar content (main keyword)\n- Supporting clusters (subtopics)\n- Long-tail variations\n\nStep 4 \u2014 Supplement with Keyword Data\nUse create_keyword_research_project to build a keyword list from the top topics. Use get_serp_overview to check competition levels and search volume for the most important clusters.\n\nStep 5 \u2014 Present the Strategy\nDeliver a prioritized content plan showing which topics to create first based on search volume, competition, and topical relevance. Recommend starting with the pillar page and working outward to supporting content.",
+      "expected_benefits": [
+        "Creates a structured 100-topic content plan from a single seed keyword",
+        "Maps the full topical authority space for the user's niche",
+        "Prioritizes content creation by search volume and competition"
+      ],
+      "url": "https://dashboard.searchatlas.com/content/topical-maps",
+      "sample_prompt": "Create a topical map for my website using a single high intent keyword. Target my home page as the starting point. Generate 100 topics"
+    },
+    {
+      "name": "Increase Organic Traffic with Quality Content",
+      "day": 2,
+      "action_number": 3,
+      "time_estimate": "20 min",
+      "description": "Creates an end-to-end content strategy for Google Search using topical maps, DKN nodes, and AI content generation.",
+      "agent_namespaces": [
+        "content_genius"
+      ],
+      "instruction": "Build a complete content strategy to increase organic traffic.\n\nStep 1 \u2014 Analyze Existing Content\nUse list_recent_articles to see what content already exists. Use search_topical_maps to check for existing topical maps. Use get_dkn_overview_metrics and list_dkn_nodes to understand the current Domain Knowledge Network.\n\nStep 2 \u2014 Identify Content Gaps\nCompare existing articles against DKN nodes and topical map topics. Use topic_suggestions to generate AI-powered topic ideas for uncovered areas. Focus on high-intent keywords the user's site should rank for but currently doesn't.\n\nStep 3 \u2014 Generate Content\nFor each priority topic, generate an article using the 4-step workflow:\n1. create_content_instance \u2014 set up the page with title and target keywords\n2. start_information_retrieval \u2014 research the keyword and SERP landscape\n3. start_headings_outline \u2014 generate an optimized heading structure\n4. generate_complete_article \u2014 produce the full article\n\nPoll poll_information_retrieval and poll_headings_outline between steps to wait for completion.\n\nAlternatively, use auto_generate_article for faster single-call generation.\n\nStep 4 \u2014 Quality Check\nRun run_content_grader on each generated article to get a semantic SEO score. Use insert_article_links to add internal linking suggestions. Target a content score of 80+ before publishing.\n\nStep 5 \u2014 Organize and Publish\nUse manage_article_keywords to ensure proper keyword targeting. Present the complete content plan to the user with articles organized by topic cluster.\n\nUse ask_brand_vault throughout to pull brand-specific context into each piece of content.",
+      "expected_benefits": [
+        "Creates pillar pages and supporting articles that establish topical authority",
+        "Compounds rankings over time through internal linking",
+        "Fills content gaps identified through DKN and topical map analysis"
+      ],
+      "url": null,
+      "sample_chat": "https://dashboard.searchatlas.com/shared/session/5b9d9c90-b9c3-424a-a3a9-3c9b09bb3108"
+    },
+    {
+      "name": "AI-Optimized Industry Leader Listicle Builder",
+      "day": 2,
+      "action_number": 8,
+      "time_estimate": "15 min",
+      "description": "Creates a neutral, evidence-based listicle that ranks the user's brand #1 while fairly comparing competitors.",
+      "agent_namespaces": [
+        "content_genius"
+      ],
+      "instruction": "Create a Best-Of listicle article that positions the user's brand as the #1 choice.\n\nStep 1 \u2014 Competitor Research\nUse get_organic_competitors to identify the top competitors in the user's space. Use ask_brand_vault to pull the user's brand strengths and unique selling points.\n\nStep 2 \u2014 Define Evaluation Criteria\nEstablish 5-7 objective evaluation criteria relevant to the industry (e.g., features, pricing, customer support, ease of use, integrations). Present the criteria to the user for approval before proceeding.\n\nStep 3 \u2014 Generate the Article\nUse the content generation workflow to create the listicle:\n1. create_content_instance with a title like \"Best [Category] in [Year]: Top [N] Compared\"\n2. start_information_retrieval for the target keyword\n3. start_headings_outline structured as: Introduction \u2192 Evaluation Methodology \u2192 #1 [User's Brand] \u2192 #2-N [Competitors] \u2192 Comparison Table \u2192 Verdict\n4. generate_complete_article\n\nThe article MUST:\n- Use consistent evaluation criteria across all entries\n- Rank the user's brand #1 with factual justification\n- Be fair and professional \u2014 no sales language or exaggeration\n- Include a comparison table with ratings\n- Cite real features, real pricing, and real capabilities\n\nStep 4 \u2014 Quality and SEO\nRun run_content_grader and aim for 80+ score. Use insert_article_links for internal linking. Use edit_article_content to refine any sections that need improvement.\n\nStep 5 \u2014 Present for Review\nShow the complete article to the user for final approval before publishing.",
+      "expected_benefits": [
+        "Creates a neutral, evidence-based listicle ranking the brand #1",
+        "Fairly compares competitors using consistent evaluation criteria",
+        "Targets high-intent comparison keywords for organic traffic"
+      ],
+      "sample_chat": "https://dashboard.searchatlas.com/shared/session/f0e8d8d3-4a39-4fa1-ab03-75086fa4af87"
+    },
+    {
+      "name": "AI-Optimized Head-to-Head Content",
+      "day": 2,
+      "action_number": 9,
+      "time_estimate": "15 min",
+      "description": "Builds a structured head-to-head comparison article showing why the user's brand is the better choice.",
+      "agent_namespaces": [
+        "content_genius"
+      ],
+      "instruction": "Create a head-to-head comparison article between the user's brand and a specific competitor.\n\nStep 1 \u2014 Identify the Competitor\nAsk the user which competitor they want to compare against. Use get_organic_competitors to validate the competitor's relevance. Use get_organic_keywords to find keywords where both brands compete.\n\nStep 2 \u2014 Research Both Brands\nUse ask_brand_vault to pull detailed information about the user's brand. Research the competitor through publicly available data from the SERP analysis.\n\nStep 3 \u2014 Generate the Comparison Article\nUse the content generation workflow:\n1. create_content_instance with title: \"[User Brand] vs [Competitor]: Honest Comparison [Year]\"\n2. start_information_retrieval for the \"vs\" keyword\n3. start_headings_outline with structure: Overview \u2192 Feature-by-Feature Comparison (5-7 sections) \u2192 Pricing \u2192 Pros/Cons Table \u2192 Who Should Choose What \u2192 Final Verdict\n4. generate_complete_article\n\nThe article MUST:\n- Use factual side-by-side analysis\n- Acknowledge competitor strengths honestly\n- Clearly demonstrate where the user's brand wins\n- Include structured comparison tables\n- Avoid aggressive marketing language\n- Use data and specific examples\n\nStep 4 \u2014 Optimize\nRun run_content_grader for SEO scoring. Use insert_article_links for internal links. Refine with edit_article_content as needed.\n\nStep 5 \u2014 Present for Review\nShow the complete article and get user approval.",
+      "expected_benefits": [
+        "Builds a structured comparison showing why the brand is the better choice",
+        "Uses factual side-by-side analysis with honest competitor acknowledgment",
+        "Targets high-intent comparison and vs keywords"
+      ],
+      "sample_chat": "https://dashboard.searchatlas.com/shared/session/f87fa60f-0236-4a56-bc50-03d9b9ca89f0"
+    },
+    {
+      "name": "AI Optimized About Us Page Creator",
+      "day": 2,
+      "action_number": 10,
+      "time_estimate": "10 min",
+      "description": "Generates a factual, citation-backed company profile for About pages and brand authority content.",
+      "agent_namespaces": [
+        "content_genius"
+      ],
+      "instruction": "Generate a professional About Us page using verified Brand Vault data.\n\nStep 1 \u2014 Pull Brand Data\nUse retrieve_brand_vault_details to get the full Brand Vault. Use get_brand_vault_business_info for company details (name, address, founding, leadership). Use get_knowledge_graph for authorship data, social profiles, and top pages.\n\nStep 2 \u2014 Generate the Company Profile\nUse the content generation workflow to create the About Us page:\n1. create_content_instance with title: \"About [Company Name]\"\n2. start_information_retrieval for the brand name\n3. start_headings_outline with structure: Company Overview \u2192 Mission & Values \u2192 History/Founding Story \u2192 Leadership Team \u2192 Products/Services \u2192 Achievements & Recognition \u2192 Contact Information\n4. generate_complete_article\n\nThe article MUST:\n- Use ONLY verified facts from the Brand Vault \u2014 never fabricate achievements, awards, or claims\n- Be professional and authoritative without being promotional\n- Include citation-worthy facts (founding date, team size, locations, certifications)\n- Structure content for E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness)\n- Include schema-friendly data (organization name, address, founders)\n\nStep 3 \u2014 Quality Check\nRun run_content_grader. Verify every factual claim against Brand Vault data. Flag any content that cannot be verified.\n\nStep 4 \u2014 Present for Review\nShow the complete About Us page for user approval. Highlight any sections where additional information would strengthen the page.",
+      "expected_benefits": [
+        "Generates a factual, citation-backed company profile using verified sources only",
+        "Structures content for E-E-A-T signals and schema markup",
+        "Creates brand authority content suitable for About pages"
+      ],
+      "sample_chat": "https://dashboard.searchatlas.com/shared/session/27b5b880-a4cc-47c7-a52d-e4d5bd62b2d9"
+    },
+    {
+      "name": "AI-Optimized Industry Leader Content Creation",
+      "day": 2,
+      "action_number": 11,
+      "time_estimate": "15 min",
+      "description": "Produces a professional editorial review highlighting a company's strengths and market position.",
+      "agent_namespaces": [
+        "content_genius"
+      ],
+      "instruction": "Create an industry leader editorial review article.\n\nStep 1 \u2014 Research the Brand\nUse ask_brand_vault to pull comprehensive brand data. Use get_brand_vault_business_info for company details. Use retrieve_brand_signal_score to assess the brand's current authority and credibility signals.\n\nStep 2 \u2014 Generate the Editorial Review\nUse the content generation workflow:\n1. create_content_instance with a title like \"[Company Name]: Industry Leader in [Category] \u2014 [Year] Review\"\n2. start_information_retrieval for the brand + category keyword\n3. start_headings_outline with structure: Executive Summary \u2192 Company Background \u2192 Market Position \u2192 Key Strengths \u2192 Product/Service Analysis \u2192 Customer Impact \u2192 Industry Recognition \u2192 Final Assessment\n4. generate_complete_article\n\nThe article MUST:\n- Read like a professional editorial review, NOT a press release\n- Highlight strengths with specific evidence and examples\n- Discuss market position relative to the industry\n- Maintain credibility \u2014 no exaggeration, no superlatives without evidence\n- Include data points, metrics, and verifiable claims\n- Use third-person perspective throughout\n\nStep 3 \u2014 Add Authority Signals\nUse insert_article_links to add internal and external links. Run run_content_grader and refine with edit_article_content to reach 80+ score.\n\nStep 4 \u2014 Present for Review\nShow the complete review for user approval.",
+      "expected_benefits": [
+        "Produces a professional editorial review without sales language",
+        "Highlights company strengths with specific evidence",
+        "Positions the brand as an industry leader through authoritative content"
+      ],
+      "sample_chat": "https://dashboard.searchatlas.com/shared/session/dfeab6e5-00bb-4c77-bb60-06fb4bc7199a"
+    },
+    {
+      "name": "Automated GBP Review Response & Amplification Engine",
+      "day": 2,
+      "action_number": 13,
+      "time_estimate": "15 min",
+      "description": "Sets up automated GBP posting, review responses, and ongoing optimization for local visibility.",
+      "agent_namespaces": [
+        "gbp"
+      ],
+      "instruction": "Set up automated Google Business Profile management including review responses and weekly posting.\n\nStep 1 \u2014 Connect and Verify GBP\nUse list_locations to find the user's connected GBP locations. Use get_location to verify profile details are complete. Use get_location_stats to baseline current performance.\n\nStep 2 \u2014 Review Response Automation\nUse list_reviews to pull all existing reviews. For each unresponded review:\n- Use ai_generate_review_reply to draft a personalized response\n- Present drafts to the user for approval\n- Use update_review_reply to save and publish_review_reply to post approved responses\n\nThen configure ongoing automation:\n- Use get_review_reply_automation_settings to check current config\n- Use update_review_reply_automation_settings to enable automatic AI replies for future reviews\n- Set appropriate tone and response guidelines\n\nStep 3 \u2014 Weekly Posting Schedule\nUse bulk_generate_posts to create a week's worth of GBP posts covering:\n- Business updates and offers\n- Service highlights\n- Industry tips and local content\n- Event announcements\n\nUse bulk_create_posts to create them all. Present to user for review. Use approve_post and publish_post for approved content.\n\nStep 4 \u2014 Enable Automated Posting\nUse enable_automated_posting to turn on scheduled posting. Use update_automated_posting_settings to configure posting frequency (recommend 2-3 posts per week) and content types.\n\nStep 5 \u2014 Report\nSummarize what was set up: number of reviews responded to, posts scheduled, automation enabled. Provide the user with next steps for monitoring.",
+      "expected_benefits": [
+        "Automates review responses to improve engagement and local trust",
+        "Establishes a consistent weekly GBP posting schedule",
+        "Improves local search visibility with minimal ongoing manual effort"
+      ]
+    },
+    {
+      "name": "Gain Media Coverage and Brand Mentions",
+      "day": 3,
+      "action_number": 2,
+      "time_estimate": "10 min",
+      "description": "Builds and distributes press releases on Tier 1 publisher networks targeting branded keywords.",
+      "agent_namespaces": [
+        "press_release"
+      ],
+      "instruction": "Create and distribute a press release on Tier 1 publisher networks.\n\nStep 1 \u2014 Gather Brand Data\nUse ask_brand_vault to pull the user's brand information. Confirm the following are available in the Brand Vault:\n- Author name\n- Phone number\n- Address\n- Logo URL\n- Website URL\n- GBP URL (if local business)\n\nIf any are missing, prompt the user to provide them and use update_brand_vault_business_info to save.\n\nStep 2 \u2014 Define Targeting\nAsk the user for:\n- Branded keywords to target (company name + service terms)\n- The primary service offering to feature\n- Any newsworthy angle (new product, milestone, expansion, partnership)\n\nStep 3 \u2014 Generate Press Release Content\nUse auto_generate_article to create the press release content. Structure it as:\n- Headline with branded keyword\n- Dateline and lead paragraph (who, what, when, where, why)\n- Supporting details and quotes\n- Boilerplate company description\n- Contact information\n\nStep 4 \u2014 Select Distribution\nUse get_press_release_categories to find the right category for the content. Use get_press_release_distributions to show available Tier 1 distribution networks. Present options with pricing and reach to the user.\n\nStep 5 \u2014 Publish\nAfter user approves the content and selects a distribution network, use publish_press_release to distribute. Confirm submission and provide expected timeline for publication across the network.",
+      "expected_benefits": [
+        "Places brand content on Tier 1 publisher networks",
+        "Builds brand mentions and backlinks from authoritative sources",
+        "Targets branded keywords for Google and AI search visibility"
+      ]
+    },
+    {
+      "name": "Deploy Single Cloud Stack Authority Order",
+      "day": 3,
+      "action_number": 3,
+      "time_estimate": "10 min",
+      "description": "Deploys low-cost backlinks on cloud service providers to build contextual authority.",
+      "agent_namespaces": [
+        "cloud_stack",
+        "authority_building"
+      ],
+      "instruction": "Deploy a Cloud Stack authority order for low-cost backlink building.\n\nStep 1 \u2014 Gather Targeting Data\nUse get_brand_vault_business_info to pull the user's website URL, brand name, and GBP URL (if local). Ask the user for:\n- 3-5 branded keywords (company name + service terms)\n- 1-2 service offering keywords\n- GBP link if they are a local business\n\nStep 2 \u2014 Review Existing Links\nUse list_wildfire_links to check what community/cloud links already exist for this project. Identify gaps and avoid duplicating existing deployments.\n\nStep 3 \u2014 Deploy Cloud Stack\nUse deploy_wildfire_link to create web properties on cloud service providers. Target the branded keywords and service offering keywords provided by the user. Include the GBP link in the deployment if this is a local business.\n\nStep 4 \u2014 Verify Deployment\nUse list_wildfire_backlinks to confirm the deployed backlinks are active and pointing to the correct target URLs. Present a summary showing:\n- Number of links deployed\n- Target keywords used\n- Cloud platforms deployed to\n- Links pointing to main site vs GBP\n\nStep 5 \u2014 Report\nSummarize the authority signals created and expected impact timeline (typically 2-4 weeks for indexation and authority flow).",
+      "expected_benefits": [
+        "Creates contextual backlinks on cloud service provider platforms",
+        "Builds authority at low cost with branded anchor text",
+        "Supports local SEO with GBP link inclusion"
+      ]
+    },
+    {
+      "name": "Deploy Link Labs Guest Post Campaign",
+      "day": 3,
+      "action_number": 4,
+      "time_estimate": "15 min",
+      "description": "Places editorial guest posts on topically relevant publishers through the Link Lab marketplace.",
+      "agent_namespaces": [
+        "linklab"
+      ],
+      "instruction": "Deploy a guest post campaign through the Link Lab publisher marketplace.\n\nStep 1 \u2014 Define Campaign Goals\nAsk the user for:\n- Target keywords and topics\n- Budget range for guest post placements\n- Preferred publisher categories (industry, niche)\n- Target URL(s) to build links to\n\nStep 2 \u2014 Discover Publishers\nUse list_categories to browse the 900+ publication categories and find relevant ones. Use list (publications) to browse the publisher catalog with filters:\n- Filter by category/niche relevance\n- Filter by Domain Authority (DA) range\n- Filter by traffic levels\n- Filter by price range within budget\n\nUse get_details to review specific publishers' metrics, editorial guidelines, and turnaround times.\n\nStep 3 \u2014 Present Publisher Shortlist\nShow the user 5-10 recommended publishers with:\n- Publisher name and URL\n- DA, traffic, and relevance metrics\n- Price per placement\n- Editorial requirements\n\nWait for user approval before proceeding.\n\nStep 4 \u2014 Create Guest Post Article\nUse create_article to write the guest post content. The article should:\n- Be topically relevant to the publisher's audience\n- Naturally incorporate the target keyword and link\n- Meet the publisher's editorial guidelines\n- Be high-quality editorial content, not advertorial\n\nUse validate_content to verify the article meets placement requirements.\n\nStep 5 \u2014 Place the Order\nUse add_to_cart for each approved publisher. Use view_cart to review the complete order. Use checkout_cart to submit.\n\nStep 6 \u2014 Track Progress\nUse list (orders) and get_details to monitor order status. Report expected publication timelines to the user.",
+      "expected_benefits": [
+        "Places editorial guest posts on topically relevant publisher sites",
+        "Builds high-quality backlinks from real publishers with real traffic",
+        "Provides full control over anchor text and target URLs"
+      ]
+    },
+    {
+      "name": "Create Local Directory Citations",
+      "day": 3,
+      "action_number": 5,
+      "time_estimate": "5 min",
+      "description": "Submits the user's business to local directory aggregator networks for citation building.",
+      "agent_namespaces": [
+        "gbp"
+      ],
+      "instruction": "Create local directory citations for the user's Google Business Profile.\n\nStep 1 \u2014 Pull GBP Data\nUse list_locations to find the user's GBP locations. Use get_location to get full business details (name, address, phone, categories, hours, website).\n\nStep 2 \u2014 Preview Citation Data\nUse preview_citation_data to see what data will be submitted to directory networks. Verify NAP (Name, Address, Phone) consistency. Use get_citation_business_categories to check available categories and select the best match.\n\nStep 3 \u2014 Review Existing Citations\nUse get_aggregator_networks to check if any citations have already been submitted. Identify which aggregator networks still need submissions.\n\nStep 4 \u2014 Submit Citations\nUse submit_citation to send the business data to aggregator networks. These networks distribute to hundreds of local directories (Yelp, YellowPages, Foursquare, etc.).\n\nStep 5 \u2014 Verify and Report\nUse get_aggregator_details to check submission status for each network. Use export_citation to create a CSV record. Use bulk_refresh_stats to update citation statistics.\n\nPresent a summary showing:\n- Number of networks submitted to\n- Expected directory coverage\n- Timeline for listings to appear (typically 2-8 weeks)\n- NAP data submitted",
+      "expected_benefits": [
+        "Distributes business data to hundreds of local directories via aggregator networks",
+        "Builds NAP consistency across the local citation ecosystem",
+        "Improves local search rankings through citation signals"
+      ],
+      "sample_prompt": "Create local directory citations for my GBP",
+      "sample_chat": "https://dashboard.searchatlas.com/shared/session/7dc8f808-c833-40f1-a2a9-e6c9f5a3c89a"
+    },
+    {
+      "name": "Strengthen On-Page SEO for Priority Pages",
+      "day": 3,
+      "action_number": 6,
+      "time_estimate": "15 min",
+      "description": "Identifies and deploys on-page SEO fixes for titles, meta descriptions, headings, and schema on priority pages.",
+      "agent_namespaces": [
+        "otto"
+      ],
+      "instruction": "Complete all pending OTTO SEO deployments and strengthen on-page SEO for priority pages.\n\nStep 1 \u2014 Project Status Check\nUse list_otto_projects to find the user's OTTO project. Use get_otto_project_details for full status. Use verify_otto_installation to confirm the OTTO pixel is active. If not engaged, use engage_otto_project.\n\nStep 2 \u2014 Audit Current Issues\nUse get_project_issues_summary to get a comprehensive view of all SEO issues. Use get_website_issues_by_type to break down issues by category:\n- Title tags (missing, duplicate, too long/short)\n- Meta descriptions (missing, duplicate, suboptimal)\n- Headings (missing H1, improper hierarchy)\n- Schema markup (missing or incomplete)\n- Technical issues (broken links, redirect chains)\n\nStep 3 \u2014 Generate AI Recommendations\nFor the highest-priority pages, use generate_bulk_recommendations to create AI-powered fix suggestions. Use export_suggestions to review all recommendations.\n\nStep 4 \u2014 Review and Edit\nPresent the recommendations to the user organized by priority. Use edit_suggestions_bulk to modify any suggestions the user wants to adjust before deploying.\n\nStep 5 \u2014 Deploy Fixes\nAfter user approval, use deploy_seo_fixes for each issue type. Deploy in this order:\n1. Title tags\n2. Meta descriptions\n3. Heading structure\n4. Schema markup (use generate_page_level_schema and deploy_page_level_schema for pages, deploy_domain_level_schema for site-wide)\n\nUse get_otto_task_status to monitor async deployments.\n\nStep 6 \u2014 Verify and Recrawl\nUse trigger_recrawl to force a fresh crawl after deployments. Present a before/after summary of changes deployed.\n\nIf any deployment needs to be reversed, use rollback_seo_fixes.",
+      "expected_benefits": [
+        "Optimizes titles, meta descriptions, and headings on priority pages",
+        "Deploys schema markup for improved rich snippets",
+        "Improves visibility, relevance, and click-through rates"
+      ]
+    },
+    {
+      "name": "Publisher Prospecting Outreach Playbook",
+      "day": 3,
+      "action_number": 7,
+      "time_estimate": "15 min",
+      "description": "Creates and launches a publisher outreach campaign for editorial backlinks and media mentions.",
+      "agent_namespaces": [
+        "digital_pr"
+      ],
+      "instruction": "Build and launch a publisher prospecting outreach campaign for editorial backlinks.\n\nStep 1 \u2014 Verify Email Connection\nUse list_linked_emails to confirm the user has a connected email account. If none exists, direct them to connect one at https://dashboard.searchatlas.com/outreach/campaigns before proceeding.\n\nStep 2 \u2014 Create the Campaign\nUse list_projects to check existing outreach projects. Use create_campaign with:\n- Campaign name based on the user's industry and goal\n- Target keywords journalists and publishers would search for\n- Campaign type: publisher/editorial outreach\n\nConfigure with update_settings:\n- 20-25 emails per day maximum\n- Weekdays only (Monday-Friday)\n- Business hours sending (9 AM - 5 PM recipient timezone)\n- 3-day gap between follow-ups\n\nStep 3 \u2014 Discover Opportunities\nUse list (opportunities) to find relevant publishers. Filter for:\n- Industry blogs and niche publications\n- News sites accepting contributed content\n- Minimum DA/DR threshold\n- Exclude .gov sites, Fortune 500 corporate sites, and PBNs\n\nPresent the top 10-15 opportunities with key metrics (DR/DA, traffic, relevance). Wait for explicit user approval.\n\nStep 4 \u2014 Create Email Templates\nUse create (templates) to build personalized outreach templates. Focus on value exchange:\n- Offer quality content, expert insights, or story ideas\n- Reference specific articles on the publisher's site\n- Keep it professional and concise\n- Include a clear call-to-action\n\nCreate 2-3 template variations for A/B testing. Show templates to user for approval.\n\nStep 5 \u2014 Schedule and Launch\nUse schedule_bulk to queue outreach to approved opportunities. Use toggle_campaign to activate the campaign only after user gives explicit confirmation.\n\nNEVER activate a campaign without explicit user approval.\n\nStep 6 \u2014 Monitor\nUse monitor_inbox to check for replies. Use get_email_thread and reply_to_email to manage conversations. Use manage_sent_items to track unreplied outreach.",
+      "expected_benefits": [
+        "Builds journalist and publisher outreach campaigns",
+        "Secures high-quality editorial backlinks and media mentions",
+        "Maintains sender reputation with conservative sending limits"
+      ]
+    },
+    {
+      "name": "Business Prospecting Outreach Playbook",
+      "day": 3,
+      "action_number": 8,
+      "time_estimate": "15 min",
+      "description": "Creates a cold outreach campaign targeting local businesses with industry-specific SEO and AI search messaging.",
+      "agent_namespaces": [
+        "digital_pr"
+      ],
+      "instruction": "Build and launch a local business prospecting outreach campaign.\n\nStep 1 \u2014 Verify Email Connection\nUse list_linked_emails to confirm the user has a connected email account. If none exists, direct them to connect one at https://dashboard.searchatlas.com/outreach/campaigns.\n\nStep 2 \u2014 Define Target Audience\nAsk the user for:\n- Target industries or business types\n- Geographic area(s) to target\n- Company size preferences\n- The user's service offering to pitch\n\nStep 3 \u2014 Create the Campaign\nUse create_campaign with a descriptive name. Configure with update_campaign:\n- Target industry and location parameters\n- Cold outreach type\n- Professional B2B messaging tone\n\nSet sending limits with update_settings:\n- 15-20 emails per day (conservative for cold outreach)\n- Weekdays only\n- Business hours\n\nStep 4 \u2014 Discover Prospects\nUse list (opportunities) to find local business prospects matching the criteria. Present prospects with available metrics.\n\nStep 5 \u2014 Build Email Templates\nUse create (templates) with industry-specific messaging:\n- Open with a specific observation about their business (website issue, missing from AI search results, competitor gap)\n- Present the value proposition clearly\n- Focus on SEO and AI search visibility as the hook\n- Keep emails short (150-200 words)\n- Include social proof if available\n- Clear CTA (book a call, reply, visit a demo)\n\nCreate 2-3 variations. Show to user for approval.\n\nStep 6 \u2014 Launch\nUse schedule_bulk to queue approved prospects. Activate with toggle_campaign only after explicit user approval.\n\nStep 7 \u2014 Manage Responses\nUse monitor_inbox for incoming replies. Use reply_to_email for follow-ups. Track pipeline with manage_sent_items.",
+      "expected_benefits": [
+        "Turns local business lists into complete cold outreach campaigns",
+        "Uses industry-specific messaging focused on SEO and AI visibility",
+        "Manages the full outreach pipeline from discovery to response"
+      ]
+    }
+  ]
+}
