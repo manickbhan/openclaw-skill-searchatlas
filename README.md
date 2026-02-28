@@ -1,70 +1,60 @@
 # SearchAtlas — OpenClaw Skill
 
-Omni-channel marketing agent for [OpenClaw](https://openclaw.ai). Manage ClickUp messages, prioritize your inbox, and draft responses — all from your AI agent.
+The first agentic omnichannel marketing platform powered by the Model Context Protocol. **112 AI-driven marketing tools** across SEO, GEO, Google Ads, local SEO, GMB optimization, content generation, digital PR, link building, and website creation — all through one MCP endpoint.
 
-## Features
-
-- **Inbox Digest** — Fetch all pending ClickUp messages (DMs, mentions, threads) with automatic priority classification
-- **Channel Summaries** — Get quick summaries of any ClickUp channel
-- **AI Draft Responses** — Auto-draft replies for critical and high-priority messages using Groq LLM
-- **Priority Engine** — Messages classified as Critical / High / Medium / Low based on type, mentions, and context
+**One marketing agent. Every channel. Total automation.**
 
 ## Install
-
-### OpenClaw (recommended)
 
 Paste this GitHub URL into your OpenClaw chat, or:
 
 ```bash
-# Manual install
 git clone https://github.com/manickbhan/openclaw-skill-searchatlas.git \
   ~/.openclaw/skills/searchatlas
-cd ~/.openclaw/skills/searchatlas && pip install -r requirements.txt
 ```
 
-### As MCP Server
+Set your API key:
 
-Add to your MCP client config (Claude Code, Cursor, etc.):
-
-```json
-{
-  "mcpServers": {
-    "searchatlas": {
-      "command": "python",
-      "args": ["-m", "searchatlas.server"],
-      "cwd": "/path/to/openclaw-skill-searchatlas",
-      "env": {
-        "CLICKUP_API_TOKEN": "your_token"
-      }
-    }
-  }
-}
+```bash
+export MCP_API_KEY="your-searchatlas-api-key"
 ```
 
-## Environment Variables
+Get an API key at [dashboard.searchatlas.com](https://dashboard.searchatlas.com).
 
-| Variable | Required | Purpose |
-|---|---|---|
-| `CLICKUP_API_TOKEN` | Yes | ClickUp Personal API Token |
-| `GROQ_API_KEY` | No | Enables AI-powered summaries and draft responses |
+## What You Get
 
-## Tools
+| Category | Tools | What It Does |
+|----------|-------|--------------|
+| OTTO SEO | 15 | On-page optimization, schema markup, knowledge graphs, instant indexing, wildfire linking |
+| PPC / Google Ads | 13 | Full campaign lifecycle: business setup, keyword clustering, ad creation, bid management |
+| Site Explorer | 8 | Organic keywords, backlinks, competitor analysis, SERP features |
+| Content Genius | 7 | AI article generation, topical maps, DKN, publishing to 11+ CMS |
+| GBP (GMB) | 16 | Location management, automated posting, AI review responses |
+| Local SEO | 7 | Heatmap rank tracking, citation building, AI keyword recommendations |
+| Press Release | 4 | AI content, Tier 1 publisher distribution |
+| Cloud Stack | 4 | Authority backlinks across 14+ cloud providers |
+| Digital PR | 4 | Publisher outreach campaigns, email templates |
+| LinkLab | 4 | Guest post marketplace, editorial link building |
+| LLM Visibility (GEO) | 8 | Brand visibility across ChatGPT, Gemini, Perplexity, Copilot, Grok |
+| Brand Vault + Website Studio | 2 | Brand identity management, AI website generation |
+| **Total** | **112** | |
 
-| Tool | Description |
-|---|---|
-| `get_message_digest` | Fetch prioritized inbox digest (DMs, mentions, threads) |
-| `summarize_channel` | Summarize recent messages in a ClickUp channel |
-| `draft_response` | AI-draft responses for urgent messages |
+## 15 Ready-to-Run Playbooks
 
-## Priority Classification
+Battle-tested marketing automation workflows included — from Brand Vault setup to full PPC campaign deployment. See `SKILL.md` for the complete list.
 
-| Priority | Criteria |
-|---|---|
-| CRITICAL | DM with question or @mention directed at you |
-| HIGH | Any DM, thread reply to your message, or @mention |
-| MEDIUM | Active channel thread (has replies) |
-| LOW | Other unread messages |
+## MCP Server
+
+```
+Endpoint: https://mcp.searchatlas.com/api/v1/mcp
+Protocol: JSON-RPC 2.0
+Auth:     X-API-KEY header
+```
+
+## About SearchAtlas
+
+[SearchAtlas](https://searchatlas.com) is the all-in-one SEO, GEO, and digital marketing platform. The Agentic Omnichannel Marketing MCP is the programmable interface that lets AI agents orchestrate every marketing channel from a single endpoint.
 
 ## License
 
-MIT
+Proprietary — [SearchAtlas](https://searchatlas.com)
